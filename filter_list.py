@@ -9,15 +9,15 @@ query = ""
 
 x = len(sys.argv)  # not using match fpr python3 < 3.10 compatability
 if x == 2:
-    macaddr = sys.argv[1]
-    query = macaddr.lower()
+    macaddr = sys.argv[1].lower()
+    query = macaddr
 elif x == 3:
     name = sys.argv[1]
-    macaddr = sys.argv[2]
+    macaddr = sys.argv[2].lower()
     query = name.lower()
 elif x == 4:
     name = sys.argv[1]
-    macaddr = sys.argv[2]
+    macaddr = sys.argv[2].lower()
     ipaddr = sys.argv[3]
     query = name
 
@@ -49,7 +49,7 @@ exactMatch = False
 thisQueryTitle = title = (name + " " + macaddr + " " + ipaddr).strip()
 for s in server_list.servers:
 
-    if s.macaddr.lower().startswith(query) or s.name.lower().startswith(query):
+    if s.macaddr.startswith(query) or s.name.lower().startswith(query):
         title = (s.name + " " + s.macaddr + " " + s.ipaddr).strip()
         if title == thisQueryTitle:
             exactMatch = True
