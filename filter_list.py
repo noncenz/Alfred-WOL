@@ -1,6 +1,7 @@
 import pickle
 import sys
 import json
+import re
 
 name = ""
 macaddr = ""
@@ -54,15 +55,15 @@ for s in server_list.servers:
         if title == thisQueryTitle:
             exactMatch = True
         variables = {"name": s.name, "macaddr": s.macaddr, "ipaddr": s.ipaddr}
-        isValid = True
-        # mods = {"cmd": {"valid": isValid}}
         match = {"title": title, "subtitle": s.name, "autocomplete": title, "arg": s.macaddr, "variables": variables}
 
         result_list.append(match)
 
 if not exactMatch:
     variables = {"name": name, "macaddr": macaddr, "ipaddr": ipaddr}
-    thisQuery = {"title": thisQueryTitle, "subtitle": name, "autocomplete": thisQueryTitle, "arg": macaddr,
+    valid_mac_addr = bool(re.match('^' + r'[:-]'.join(['([0-9a-f]{2})'] * 6), macaddr))
+    thisQuery = {"title": thisQueryTitle, "subtitle": name, "autocomplete": thisQueryTitle, "valid": valid_mac_addr,
+                 "arg": macaddr,
                  "variables": variables}
     result_list.append(thisQuery)
 
