@@ -1,16 +1,13 @@
 import pickle
-
-from json import JSONEncoder
 import sys
 import json
-
 
 name = ""
 macaddr = ""
 ipaddr = ""
 query = ""
 
-x = len(sys.argv) # not using match fpr python3 < 3.10 compatability
+x = len(sys.argv)  # not using match fpr python3 < 3.10 compatability
 if x == 2:
     macaddr = sys.argv[1]
     query = macaddr.lower()
@@ -24,6 +21,7 @@ elif x == 4:
     ipaddr = sys.argv[3]
     query = name
 
+
 class Server:
     def __init__(self, name="", ipaddr="", macaddr=""):
         self.name = name
@@ -35,7 +33,7 @@ class ServerList:
     def __init__(self, servers=[]):
         self.servers = servers
 
-# todo: cache?
+
 with open("servers", "a+b") as f:
     try:
         f.seek(0)
@@ -43,7 +41,6 @@ with open("servers", "a+b") as f:
     except:
         server_list = ServerList()
     f.close()
-
 
 query = query.lower()
 result_list = []
@@ -65,15 +62,10 @@ for s in server_list.servers:
 
 if not exactMatch:
     variables = {"name": name, "macaddr": macaddr, "ipaddr": ipaddr}
-    thisQuery = {"title": thisQueryTitle, "subtitle": name, "autocomplete": thisQueryTitle, "arg": macaddr, "variables": variables}
+    thisQuery = {"title": thisQueryTitle, "subtitle": name, "autocomplete": thisQueryTitle, "arg": macaddr,
+                 "variables": variables}
     result_list.append(thisQuery)
 
 result = {"items": result_list}
 
 print(json.dumps(result))
-
-
-
-
-
-
