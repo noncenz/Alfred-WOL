@@ -24,10 +24,11 @@ elif x == 4:
 
 
 class Server:
-    def __init__(self, name="", ipaddr="", macaddr=""):
+    def __init__(self, name="", ipaddr="", macaddr="",uuid=""):
         self.name = name
         self.ipaddr = ipaddr
         self.macaddr = macaddr
+        self.uuid = uuid
 
 
 class ServerList:
@@ -54,8 +55,8 @@ for s in server_list.servers:
         title = (s.name + " " + s.macaddr + " " + s.ipaddr).strip()
         if title == thisQueryTitle:
             exactMatch = True
-        variables = {"name": s.name, "macaddr": s.macaddr, "ipaddr": s.ipaddr}
-        match = {"title": title, "subtitle": s.name, "autocomplete": title, "arg": s.macaddr, "variables": variables}
+        variables = {"name": s.name, "macaddr": s.macaddr, "ipaddr": s.ipaddr, "uuid": s.uuid}
+        match = {"uid": s.uuid, "title": title, "subtitle": s.name, "autocomplete": title, "arg": s.macaddr, "variables": variables}
 
         result_list.append(match)
 
