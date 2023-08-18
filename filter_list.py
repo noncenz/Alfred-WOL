@@ -1,7 +1,7 @@
-import pickle
 import sys
 import json
 import re
+from wol_shared import *
 
 name = ""
 macaddr = ""
@@ -23,26 +23,7 @@ elif x == 4:
     query = name
 
 
-class Server:
-    def __init__(self, name="", ipaddr="", macaddr="",uuid=""):
-        self.name = name
-        self.ipaddr = ipaddr
-        self.macaddr = macaddr
-        self.uuid = uuid
-
-
-class ServerList:
-    def __init__(self, servers=[]):
-        self.servers = servers
-
-
-with open("servers", "a+b") as f:
-    try:
-        f.seek(0)
-        server_list = pickle.load(f)
-    except:
-        server_list = ServerList()
-    f.close()
+server_list = get_servers()
 
 query = query.lower()
 result_list = []

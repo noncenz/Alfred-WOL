@@ -59,36 +59,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>import os
-from wakeonlan.wakeonlan import send_magic_packet
-
-q = os.getenv("macaddr")
-
-send_magic_packet(q)
-
-print(q)</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>0E4474C5-C9D3-4770-B3FC-F60C3D04CF48</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -120,7 +90,7 @@ print(q)</string>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>send packet !!!!!!!!!!!!!!!!!!!!</string>
+				<string>Wake this machine</string>
 				<key>title</key>
 				<string>(servername) xx:xx:xx:xx:xx:xx</string>
 				<key>type</key>
@@ -134,6 +104,36 @@ print(q)</string>
 			<string>8DAAF50C-1B6D-410E-9B66-22F58BBFF740</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import os
+from wakeonlan.wakeonlan import send_magic_packet
+
+q = os.getenv("macaddr")
+
+send_magic_packet(q)
+
+print(q)</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>9</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0E4474C5-C9D3-4770-B3FC-F60C3D04CF48</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
